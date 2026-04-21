@@ -75,7 +75,7 @@ def calculate_macd(close_prices, fast_period=12, slow_period=26, signal_period=9
     return macd_line, signal_line, macd_histogram
 ```
 
-# Select Tickers to Focus Based on Setup Rules
+# Filter Tickers to Focus Based on Setup Rules
 
 
 # Plot Candlestick Graphs for Tickers in Focus
