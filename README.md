@@ -106,7 +106,7 @@ else:
 
 
 # Plot Candlestick Graphs for Tickers in Focus
-This script uses the mplfinance package to generate technical analysis charts for selected stocks in a clean and systematic way in a large scale.
+This script uses the mplfinance package to generate technical analysis charts for selected stocks in a clean and systematic way in a large scale. In this example, we will like to take a look at the candlestick charts, Bollinger Bands and layer it with the MACD indicators.
 
 The value of this approach is scalability and consistency: instead of manually charting each stock, this pipeline automatically generates standardized, information-rich visualizations across multiple tickers. This makes it easy to quickly identify trading signals across hundreds/thousands of tickers (e.g., price deviations, momentum shifts) and integrate chart generation into a larger data or LLM-driven workflow. 
 
