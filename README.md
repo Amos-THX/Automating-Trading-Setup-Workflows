@@ -1,6 +1,8 @@
 # Pulling Data From Yahoo Finance
 This script retrieves historical market data for a list of tickers using yfinance, pulling up to 24 months of daily price data in a single, multi-threaded request. The data is structured with a MultiIndex format—organizing each ticker alongside its corresponding metrics (e.g., Open, High, Low, Close, Volume)—which enables efficient large-scale analysis across multiple tickers in a unified dataset.
 
+We also defined the list of tickers (*tickers*) in the S&P 500 Index and other tickers we will like to track, before passing this variable into the Yahoo Finance download function.
+
 ```
 # Download stock data for multiple tickers
 # The data will have a MultiIndex for columns (Ticker, Metric)
@@ -76,6 +78,31 @@ def calculate_macd(close_prices, fast_period=12, slow_period=26, signal_period=9
 ```
 
 # Filter Tickers to Focus Based on Setup Rules
+Say for example, out of the 500 tickers in the S&P 500 Index, we will like to take a closer look only at tickers that have their candle trading below the lower Bollinger Band. This snippet below identifies stocks that are currently trading below their lower Bollinger Band based on the most recent trading day.
+It first extracts the latest date in the dataset, then filters the dataframe to include only rows from that date where the Candle_Below_Lower_BB flag is set to 1 (indicating the price has fallen below the lower band). 
+
+```
+# Find the latest date in the price_df
+latest_date = price_df['Date'].max()
+
+# Filter for the latest date and where Price_Below_Lower_BB is 1
+companies_below_lower_bb = price_df[
+    (price_df['Date'] == latest_date) &
+    (price_df['Candle_Below_Lower_BB'] == 1)
+]
+
+# Get the list of unique ticker symbols
+ticker_list = companies_below_lower_bb['Ticker_Symbol'].unique().tolist()
+
+# Print the list of companies
+if ticker_list:
+    print(f"Companies trading below the Lower Bollinger Band as of {latest_date.strftime('%Y-%m-%d')}:")
+    for ticker in ticker_list:
+        print(ticker)
+else:
+    print(f"No companies found trading below the Lower Bollinger Band as of {latest_date.strftime('%Y-%m-%d')}.")
+
+```
 
 
 # Plot Candlestick Graphs for Tickers in Focus
