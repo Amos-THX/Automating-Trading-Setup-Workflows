@@ -111,3 +111,4 @@ This script uses the mplfinance package to generate technical analysis charts fo
 The value of this approach is scalability and consistency: instead of manually charting each stock, this pipeline automatically generates standardized, information-rich visualizations across multiple tickers. This makes it easy to quickly identify trading signals across hundreds/thousands of tickers (e.g., price deviations, momentum shifts) and integrate chart generation into a larger data or LLM-driven workflow. 
 
 ![alt text](https://github.com/Amos-THX/Automating-Trading-Setup-Workflows/blob/main/NKE_candlestick.png?raw=true)
+![alt text](https://github.com/Amos-THX/Automating-Trading-Setup-Workflows/blob/main/PODD_candlestick.png?raw=true)
