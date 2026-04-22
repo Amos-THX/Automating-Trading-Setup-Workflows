@@ -78,7 +78,7 @@ def calculate_macd(close_prices, fast_period=12, slow_period=26, signal_period=9
 ```
 
 # Filter Tickers to Focus Based on Setup Rules
-Say for example, out of the 500 tickers in the S&P 500 Index, we will like to take a closer look only at tickers that have their candle trading below the lower Bollinger Band. This snippet below identifies stocks that are currently trading below their lower Bollinger Band based on the most recent trading day.
+Say for example, before the start of each trading day, out of the 500 tickers in the S&P 500 Index, we will like to take a closer look only at tickers that have their candle trading below the lower Bollinger Band. This snippet below identifies stocks that are currently trading below their lower Bollinger Band based on the most recent trading day.
 It first extracts the latest date in the dataset, then filters the dataframe to include only rows from that date where the Candle_Below_Lower_BB flag is set to 1 (indicating the price has fallen below the lower band). 
 
 ```
@@ -106,3 +106,8 @@ else:
 
 
 # Plot Candlestick Graphs for Tickers in Focus
+This script uses the mplfinance package to generate technical analysis charts for selected stocks in a clean and systematic way in a large scale.
+
+The value of this approach is scalability and consistency: instead of manually charting each stock, this pipeline automatically generates standardized, information-rich visualizations across multiple tickers. This makes it easy to quickly identify trading signals across hundreds/thousands of tickers (e.g., price deviations, momentum shifts) and integrate chart generation into a larger data or LLM-driven workflow. 
+
+![alt text](https://github.com/Amos-THX/Automating-Trading-Setup-Workflows/blob/main/NKE_candlestick.png?raw=true)
